@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 // Load Validation
@@ -27,7 +26,7 @@ router.get(
   (req, res) => {
     const errors = {};
 
-    Profile.findOne({ user: req.user.id })
+    Profile.findOne({ user: req.user.id }) //user = user id profile
       .populate('user', ['name', 'avatar'])
       .then(profile => {
         if (!profile) {
@@ -47,7 +46,7 @@ router.get('/all', (req, res) => {
   const errors = {};
 
   Profile.find()
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'avatar']) 
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = 'There are no profiles';
@@ -118,7 +117,7 @@ router.post(
     // Get fields
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (req.body.handle) profileFields.handle = req.body.handle;
+    profileFields.handle = req.body.handle;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.location) profileFields.location = req.body.location;
@@ -151,7 +150,7 @@ router.post(
         // Create
 
         // Check if handle exists
-        Profile.findOne({ handle: profileFields.handle }).then(profile => {
+        Profile.findOne({ handle : profileFields.handle }).then(profile => {
           if (profile) {
             errors.handle = 'That handle already exists';
             res.status(400).json(errors);
@@ -192,7 +191,7 @@ router.post(
       };
 
       // Add to exp array
-      profile.experience.unshift(newExp);
+      profile.experience.unshift(newExp); //add to head array
 
       profile.save().then(profile => res.json(profile));
     });
@@ -245,7 +244,7 @@ router.delete(
         // Get remove index
         const removeIndex = profile.experience
           .map(item => item.id)
-          .indexOf(req.params.exp_id);
+          .indexOf(req.params.exp_id); //return vị trí của param.id trong item.id
 
         // Splice out of array
         profile.experience.splice(removeIndex, 1);
@@ -289,8 +288,9 @@ router.delete(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+      User.findOneAndRemove({ _id: req.user.id }).then(() => //tại sao delete user
         res.json({ success: true })
+        
       );
     });
   }

@@ -6,10 +6,14 @@ import {deleteEducation} from '../../action/profileAction';
 import {Link} from 'react-router-dom';
 
 class Education extends Component {
-    onDeleteclick = (id)=>{
-        this.props.deleteEducation(id);
+    
+    onclick = (id)=>{
+        if (window.confirm('Are you sure delete education?')) {
+            this.props.deleteEducation(id);
+        } else {
+            return false
+        }
     }
-
     render() {
         const education = this.props.education.map(edu=>(
             <tr key={edu._id}>
@@ -18,7 +22,7 @@ class Education extends Component {
                 <td>
                     <Moment format='DD/MM/YYYY'>{edu.from}</Moment> - <Moment format='DD/MM/YYYY'>{ edu.to}</Moment>
                 </td>
-               <td><button onClick={()=>this.onDeleteclick(edu._id)} className='btn btn-danger' >Delete</button></td>
+               <td><button onClick={()=>this.click(edu._id)} className='btn btn-danger' >Delete</button></td>
                <td>
                <Link to={`/edit-education/${edu._id}`}>
                 <button className='btn btn-info' >Edit Education</button>

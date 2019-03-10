@@ -34,7 +34,7 @@ class Register extends Component {
 
   onSubmit = e=> {
     e.preventDefault();
-
+    
     const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -48,7 +48,7 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="register">
+      <div className="register mt-5">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

@@ -10,6 +10,7 @@ img {
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
+  background-attachment: fixed;
 }
 
 .landing-inner {
@@ -36,4 +37,110 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+/* *{margin: 0; padding: 0;} */
+
+.contact .col-8 {
+    margin-top: 60px;
+}
+
+.card .card-body {
+    margin-left: 155px;
+}
+
+.col-4.stack-features {
+    margin-top: 50px;
+}
+.development {
+    background-color: #f4f4f4;
+    padding-bottom: 50px;
+    margin-top: 60px;
+}
+.edu1 .col-8, .edu2 .col-8 {
+    margin-top: 40px;
+}
+
+.edu1 .col-6 span, .edu2 .col-6 span {width: 100%;}
+
+.row.edu1, .row.edu2 {
+    margin-left: 100px;
+}
+
+.education h4, .development h4, .contact h4 {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+}
+.education h4::after , .development h4::after , .contact h4::after {
+	content: '';
+	position: absolute;
+	width: 75px;
+	height: 2px;
+	background-color: black;
+	top: 41px;
+	right: 47%;
+	z-index: 2;
+}
+
+.edu1 img, .edu2 img {
+    width: 100%;
+}
+
+.avatarEdu img {
+    width: 100%;
+    margin-left: 106%;
+    margin-top: 30px;
+}
+
+li.nav-item {
+    padding-left: 20px;
+}
+
+nav.navbar ul.navbar-nav {
+    float: right !important;
+    text-align: right;
+    width: 100%;
+    padding-left: 60%;
+}
+.navbar.navbar-expand-sm.navbar-dark.bg-dark {
+  position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2
+}
+/* .header {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-animation: imageAnimation 3s linear;
+    animation: imageAnimation 3s linear;
+    background-attachment: fixed;
+}  */
+.section-stack .card {
+	border: 0;
+	background-color: #f4f4f4;
+}
+
+.section-stack .card-img-top {	
+	margin: auto;
+	width: 130px;
+	height: 130px;
+}
+
+.section-stack .row:nth-child(3) {
+	margin-top: 20px;
+}
+.social-links {
+	height: 40px;
+	width: 40px;
+	overflow: hidden;
+}
+
+.logo-container {
+	text-align: center;
 }

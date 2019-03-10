@@ -44,7 +44,7 @@ if(localStorage.jwtToken){
     //Clear current profile
     store.dispatch(clearCurrentProfile());
     //Redirect to login
-    window.location.href = '/login';
+    window.location.href='/';
   }
 }
 
@@ -63,7 +63,7 @@ class App extends Component {
               <Route exact path="/profile/:handle" component={Profile} />
               <Route exact path="/not-found" component={NotFound} />
               <Switch>
-                <PrivateRouter exact path="/dashboard" component={Dashboard}/>
+                <PrivateRouter exact path="/dashboard" component={Dashboard}/>  {/*  privateRoute giúp ngăn chặn vào các trang private nếu chưa login */}
               </Switch>
               <Switch>
                 <PrivateRouter exact path="/create-profile" component={CreateProfile}/>

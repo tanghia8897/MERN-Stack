@@ -34,7 +34,7 @@ class Login extends Component {
     }
 
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState({ errors: nextProps.errors });  
     }
   }
 
@@ -45,7 +45,7 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="login">
+      <div className="login mt-5">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

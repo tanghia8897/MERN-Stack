@@ -14,7 +14,7 @@ class Landing extends Component {
     return (
       <div className="landing">
         <div className="dark-overlay landing-inner text-light">
-          <div className="container">
+          <div className="container content">
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4">Developer Connector</h1>

@@ -9,13 +9,20 @@ import Experience from './Experience';
 import Education from './Education';
 
 class Dashboard extends Component {
-    onDeleteClick = ()=>{
-        this.props.deleteAccount();
-    }
+    // onDeleteClick = ()=>{
+    //     this.props.deleteAccount();
+    // }
     componentDidMount(){
         this.props.getCurrentProfile();
     }
-    
+    onclick = ()=>{
+        if (window.confirm('Are you sure you want to save this thing into the database?')) {
+            this.props.deleteAccount();
+        } else {
+            return false
+        }
+    }
+
     render() {
         const { user }  = this.props.auth;
         const { profile, loading } = this.props.profile;
@@ -24,30 +31,32 @@ class Dashboard extends Component {
             dashboardContent = <Spinner/>
         }else{
             //Check if logged in user has profile data
-            if(Object.keys(profile).length > 0){
+            if(Object.keys(profile).length > 0){ //object.keys: return array keys (keys trong key : value)
                 dashboardContent = (
                     <div>
                         <p className="lead text-muted">
                             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
                         </p>
                         <ProfileAction/>
-                        <Experience experience={profile.experience}/>
+                        <Experience experience={profile.experience}/> {/* get all exp in profile sent to exp component */}
                         <Education education={profile.education}/>
                         <div style={{ marginBottom:'60px'}}/>
-                        <button onClick={this.onDeleteClick} className='btn btn-danger'>Delete My Account</button>
+                        <button onClick={this.onclick}
+                            className='btn btn-danger'>Delete My Account
+                        </button>
                     </div>
                 )
             }else{
                 // User is logged in but has no profile
-        dashboardContent = (
-            <div>
-              <p className="lead text-muted">Welcome {user.name}</p>
-              <p>You have not yet setup a profile, please add some info</p>
-              <Link to="/create-profile" className="btn btn-lg btn-info">
-                Create Profile
-              </Link>
-            </div>
-          );
+                dashboardContent = (
+                    <div>
+                    <p className="lead text-muted">Welcome {user.name}</p>
+                    <p>You have not yet setup a profile, please add some info</p>
+                    <Link to="/create-profile" className="btn btn-lg btn-info">
+                        Create Profile
+                    </Link>
+                    </div>
+                );
             }
         }
         return (
