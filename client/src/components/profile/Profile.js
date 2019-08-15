@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Spinner from '../common/Spinner';
 import {getProfileByHandle} from '../../action/profileAction';
+import {Helmet} from 'react-helmet';
 
 import ProfileAbout from './ProfileAbout';
 import ProfileCreds from './ProfileCreds';
@@ -48,6 +49,9 @@ class Profile extends Component {
         }
         return (
             <div className='profile'>
+                <Helmet>
+                    <meta name="description" content="This is what you want to show as the page content in the Google SERP Listing,page profiles" />
+                </Helmet>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">

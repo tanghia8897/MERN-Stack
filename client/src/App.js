@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
+import {Helmet} from 'react-helmet'
 import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
@@ -58,6 +59,13 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
+          <Helmet>
+            <title>DevConnector: A social network for developers</title>
+            <meta name="description" content="This is what you want to show as the page content in the Google SERP Listing" />
+          </Helmet>
+            <Helmet>
+              <meta property="og:site_name" content="DevConnector: Test SEO site name"/>
+            </Helmet>
             <Navbar />
             <Route exact path="/" component={Landing} />
             <div className="container">
