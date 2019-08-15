@@ -33,19 +33,23 @@ if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken); 
   //Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
+  console.log(localStorage.jwtToken);
+  console.log(decoded);
   //Set user and authenticated
   store.dispatch(setCurrentUser(decoded));
 
   //Check for expired token
-  const currentTime = Date.now()/1000;
-  if(decoded.exp < currentTime){
-    //Logout user
-    store.dispatch(logoutUser);
-    //Clear current profile
-    store.dispatch(clearCurrentProfile());
-    //Redirect to login
-    window.location.href='/';
-  }
+  // const currentTime = Date.now()+1;
+  // console.log(currentTime);
+  // if(decoded.exp < currentTime){
+  //   //Logout user
+  //   store.dispatch(logoutUser);
+  //   //Clear current profile
+  //   store.dispatch(clearCurrentProfile());
+    
+  //   //Redirect to login
+  //   window.location.href='/login';
+  // }
 }
 
 class App extends Component {
